@@ -20,6 +20,10 @@ const postSchema = mongoose.Schema({
         type: [],
         required: true
     },
+    dislikes: {
+        type: [],
+        required: true
+    },
     comments: {
         type: [],
         required: true

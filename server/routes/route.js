@@ -1,4 +1,5 @@
 import express from 'express';
+import { authenticateToken } from '../middleware/authenticateToken.js';
 
 import { loginUser, singupUser } from '../controller/account-controller.js';
 import { getAllUsers, getUser, followUser } from '../controller/user-controller.js';
@@ -20,13 +21,13 @@ router.post('/file/upload', upload.single('file'), uploadImage);
 router.get('/file/:filename', getImage);
 
 router.post('/post/save', savePost);
-// router.put('/update/:id', authenticateToken, updatePost);
-// router.delete('/delete/:id', authenticateToken, deletePost);
-// router.get('/post/:id', authenticateToken, getPost);
+router.put('/update/:id', authenticateToken, updatePost);
+router.delete('/delete/:id', authenticateToken, deletePost);
+router.get('/post/:id', authenticateToken, getPost);
 
 
-// router.post('/comment/new', authenticateToken, newComment);
-// router.get('/comments/:id', authenticateToken, getComments);
-// router.delete('/comment/delete/:id', authenticateToken, deleteComment);
+router.post('/comment/new', authenticateToken, newComment);
+router.get('/comments/:id', authenticateToken, getComments);
+router.delete('/comment/delete/:id', authenticateToken, deleteComment);
 
 export default router;
